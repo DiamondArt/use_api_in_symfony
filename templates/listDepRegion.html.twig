@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+  <br> </br> </br>
+<div class="container">
+<form action="" method="GET">
+ <div class="row">
+    <div class="col-lg-10">
+     <div class="form-group">
+        <select name="region" id="region" class="form-control">
+         <option value="Toutes">Toutes les regions </option>
+            {% for region in regions %}
+         <option value={{region.code}} {% if (app.request.get("region") == region.code) %} selected {% endif %} >{{region.nom}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+      </div>
+     </div>
+     <div class="col-lg-2">
+     <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+ </div>
+</form>
+  <div class="row  mb-30">
+  {% for departement in departements %}
+   <div class="col-md-3">
+    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+     <div class="card-header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{departement.code}}</font></font></div>
+     <div class="card-body">
+        <h4 class="card-title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{departement.nom}}</font></font></h4>
+      </div>
+    </div>
+   </div>
+   {% endfor %}
+ </div>
+</div>
+{% endblock %}
